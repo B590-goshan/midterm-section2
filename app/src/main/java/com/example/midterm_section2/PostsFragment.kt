@@ -17,25 +17,32 @@ class PostsFragment : Fragment() {
             "Cannot access binding because it is null."
         }
 
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+    inflater: LayoutInflater, container: ViewGroup?,
+    savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentPostsBinding.inflate(inflater, container, false)
-
-        binding.btnLogout.setOnClickListener {
-            FirebaseAuth.getInstance().signOut() // Sign out the user
-            Toast.makeText(requireContext(), "Logged out successfully", Toast.LENGTH_SHORT).show()
-
-            findNavController().navigate(R.id.loginFragment) // Use the fragment ID directly
-        }
-
-
+        _binding = FragmentPostsBinding.inflate(inflater, container,false)
         return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-}
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated (view, savedInstanceState)
+         val auth = FirebaseAuth.getInstance()
+         if (auth.currentUser == null) {
+             goToLoginScreen()
+         }
+        binding.btnLogout.setOnClickListener{
+            auth.signOut()
+            goToLoginScreen()
+        }
+        binding.fabCreate.setOnClickListener {
+            this.findNavController().navigate(R.id.navigate_to_createFragment)
+        }
+   }
+        private fun goToLoginScreen () {
+            this.findNavController().navigate(R.id.to_loginFragment)
+        }
+   }

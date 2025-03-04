@@ -25,6 +25,19 @@
         <action
             android:id="@+id/to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/navigate_to_createFragment"
+            app:destination="@id/createFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createFragment"
+        android:name="com.example.midterm_section2.CreateFragment"
+        android:label="fragment_create"
+        tools:layout="@layout/fragment_create">
+    <action
+        android:id="@+id/navigate_to_postsFragment"
+        app:destination="@id/postsFragment" />
     </fragment>
 
 </navigation>

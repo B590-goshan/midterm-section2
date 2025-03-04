@@ -44,7 +44,8 @@ android {
 
 dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.10.0")) // Firebase BOM
-    implementation("com.google.firebase:firebase-analytics") // Firebase Analytics
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-firestore")// Firebase Analytics
 
     implementation(libs.androidx.core.ktx) // Android Core KTX
     implementation(libs.androidx.appcompat) // Android AppCompat
