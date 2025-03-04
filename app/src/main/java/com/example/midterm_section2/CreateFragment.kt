@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.navigation.fragment.findNavController
 import com.example.midterm_section2.databinding.FragmentCreateBinding
+import com.example.midterm_section2.model.Post
 import com.example.midterm_section2.model.User
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.Firebase
@@ -69,6 +71,15 @@ class CreateFragment: Fragment() {
             }
     }
     private fun saveThePost() {
+        val post = Post(
+            binding.etDescription.text.toString(),
+            "",
+            System.currentTimeMillis(),
+            signedInUser
+        )
+        firestoreDb.collection("posts").add(post).addOnCompleteListener {
+            this.findNavController().navigate(R.id.navigate_to_postsFragment)
+        }
     }
 
 }
