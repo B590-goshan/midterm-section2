@@ -58,4 +58,14 @@ dependencies {
     testImplementation(libs.junit) // JUnit testing
     androidTestImplementation(libs.androidx.junit) // Android JUnit testing
     androidTestImplementation(libs.androidx.espresso.core) // Espresso UI testing
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0") // Retrofit2 core
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0") // Gson converter for Retrofit
+    implementation("com.squareup.retrofit2:adapter-kotlin-coroutines:2.9.0")
+
+
+
+    implementation("io.coil-kt:coil:2.0.0-rc02")
+
+
 }
