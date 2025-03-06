@@ -9,11 +9,19 @@ import retrofit2.http.Path
 interface GitHubApi {
     @PUT("repos/{owner}/{repo}/contents/{path}")
     suspend fun uploadFile(
-    @Header("Authorization") token: String,
-    @Path("owner") owner: String,
-    @Path("repo") repo: String,
-    @Path("path") path: String,
-    @Body body: GitHubFile ): Response<GitHubResponse>
+        @Header("Authorization") token: String,
+        @Path("owner") owner: String,
+        @Path("repo") repo: String,
+        @Path("path") path: String,
+        @Body body: GitHubFile
+    ): Response<GitHubResponse>
+    @GET("repos/{owner}/{repo}/contents/{path}")
+    suspend fun getFileContent(
+        @Header("Authorization") token: String,
+        @Path("owner") owner: String,
+        @Path("repo") repo: String,
+        @Path("path") path: String
+    ): Response<GitHubFileResponse>
 
 }
 data class GitHubFile(
@@ -21,11 +29,16 @@ data class GitHubFile(
     val content: String,
     val branch: String = "main"
 )
-
 data class GitHubResponse(
+
     val content: Content
 )
 
+data class GitHubFileResponse(
+    val content: String,
+    val encoding: String,
+    val download_url: String
+)
 data class Content (
     val path: String,
     val sha: String

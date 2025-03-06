@@ -16,6 +16,7 @@ import com.example.midterm_section2.model.Post
 import com.example.midterm_section2.model.User
 import com.google.firebase.firestore.FirebaseFirestore
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.google.firebase.Firebase
 
 import com.google.firebase.auth.FirebaseAuth
@@ -31,6 +32,15 @@ class CreateFragment: Fragment() {
         get() = checkNotNull(_binding) {
     "Cannot access binding because it is null."
         }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user == null) {
+            Log.i(TAG, "No user is currently signed in.")
+        } else {
+            Log.i(TAG, "User signed in: ${user.uid}")
+        }
+    }
 
     private var photoUri: Uri?=null
     private var signedInUser: User?=null
@@ -81,18 +91,19 @@ class CreateFragment: Fragment() {
         val bytes = inputStream?.readBytes()
         return Base64.encodeToString(bytes,Base64.DEFAULT)
     }
+
+
     private fun saveThePost() {
 
         val imageAsString = convertUriToBase64(photoUri)
         val fileName = "${System.currentTimeMillis()}-photo.jpg"
         val job = runBlocking {
-            createPostViewModel
-                .uploadImageToGithub(imageAsString, fileName)
+            createPostViewModel.uploadImageToGithub(imageAsString, fileName)
         }
         val imageUrl = PhotoRepository.get().getImageUrl(fileName)
         val post = Post(
             binding.etDescription.text.toString(),
-            "",
+            imageUrl,
             System.currentTimeMillis(),
             signedInUser
         )

@@ -56,7 +56,12 @@ class LoginFragment : Fragment() {
         }
         return binding.root
     }
-    private fun goToPostsScreen(){
-        this.findNavController().navigate(R.id.navigateToPosts)
+    private fun goToPostsScreen() {
+        try {
+            findNavController().navigate(R.id.navigateToPosts)
+        } catch (e: Exception) {
+            Log.e(TAG, "Navigation error: ${e.message}")
+        }
     }
+
 }

@@ -61,7 +61,8 @@ dependencies {
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0") // Retrofit2 core
     implementation("com.squareup.retrofit2:converter-gson:2.9.0") // Gson converter for Retrofit
-    implementation("com.squareup.retrofit2:adapter-kotlin-coroutines:2.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2") // Correct adapter for Kotlin coroutines
+
 
 
 
