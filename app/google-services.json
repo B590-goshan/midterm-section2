@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "420718940213",
-    "project_id": "midterm-section2-a0d2d",
-    "storage_bucket": "midterm-section2-a0d2d.firebasestorage.app"
+    "project_number": "894646141354",
+    "project_id": "midterm-section2-ac088",
+    "storage_bucket": "midterm-section2-ac088.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:420718940213:android:31bc89812ca72c79f0217c",
+        "mobilesdk_app_id": "1:894646141354:android:3aa3950bb22fed18d5abd3",
         "android_client_info": {
           "package_name": "com.example.midterm_section2"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB6JJdvTsfGH7Xe1JN_2T0IXup-HmkDUQA"
+          "current_key": "AIzaSyCoGlzwtZQU1SPppc3hvsizyyqpiOT8luY"
         }
       ],
       "services": {
